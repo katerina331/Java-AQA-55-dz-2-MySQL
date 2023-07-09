@@ -61,4 +61,8 @@ public class DataHelper {
     public static ErrorInfo getInvalidLoginErrorInfo() {
         return new ErrorInfo("Ошибка! Неверно указан логин или пароль");
     }
+
+    public static ErrorInfo getLoginEnterErrorInfo() {
+        return new ErrorInfo("Блокировка! Неверно указан логин или пароль три раза");
+    }
 }
