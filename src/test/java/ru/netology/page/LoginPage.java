@@ -30,17 +30,20 @@ public class LoginPage {
         return new VerificationPage();
     }
 
+    public static void error(SelenideElement element,ErrorInfo textError) {
+        element.should(Condition.exactText(textError.getErrorText())).should(visible);
+    }
+
     public void inValidLogin() {
-        var invalidInfo = DataHelper.getInvalidAuthInfo();
         clearInput(login);
-        login.setValue(invalidInfo.getLogin());
+        login.setValue(DataHelper.getInvalidAuthInfo().getLogin());
         clearInput(password);
-        password.setValue(invalidInfo.getPassword());
+        password.setValue(DataHelper.getInvalidAuthInfo().getPassword());
         verifyLogin.click();
-        errorVerify.should(Condition.exactText(getInvalidLoginErrorInfo().getErrorText())).should(visible);
+        error(errorVerify,getInvalidLoginErrorInfo());
     }
 
     public void inLoginEnterErrorCheck() {
-        errorBlock.should(Condition.exactText(getLoginEnterErrorInfo().getErrorText())).should(visible);
+        error(errorBlock,getLoginEnterErrorInfo());
     }
 }

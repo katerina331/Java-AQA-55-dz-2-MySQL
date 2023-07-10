@@ -1,13 +1,12 @@
 package ru.netology.page;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.MySQLHelper;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static ru.netology.data.DataHelper.getInvalidErrorInfo;
-import static ru.netology.page.LoginPage.clearInput;
+import static ru.netology.page.LoginPage.*;
 
 public class VerificationPage {
     private SelenideElement codeField = $("[data-test-id=code] input");
@@ -29,6 +28,6 @@ public class VerificationPage {
         clearInput(codeField);
         codeField.setValue(MySQLHelper.getNoVerificationCodeFor());
         verifyButton.click();
-        noVerify.should(Condition.exactText(getInvalidErrorInfo().getErrorText())).shouldBe(visible);
+        error(noVerify,getInvalidErrorInfo());
     }
 }
