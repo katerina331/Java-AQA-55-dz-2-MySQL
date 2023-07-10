@@ -18,7 +18,7 @@ public class LoginPage {
     private SelenideElement errorBlock = $("[data-test-id=error-block]");
 
     public static void clearInput(SelenideElement element) {
-        element.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME, Keys.DELETE));
+        element.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
     }
 
     public VerificationPage validLogin(DataHelper.AuthInfo info) {
